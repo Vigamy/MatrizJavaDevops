@@ -24,11 +24,11 @@ jobs:
         
     # Compilar main
     - name: Compilar Main
-      run: javac src/Main.java
+      run: javac src/NumAleatorios.java
 
     # Executar main
     - name: Executar Main
-      run: java src/Main.java
+      run: java src/NumAleatorios.java
     
 
     
