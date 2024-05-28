@@ -1,4 +1,4 @@
 FROM openjdk:latest
 WORKDIR salaf 
 COPY . .
-CMD ["java", "src/Main.java"]
+CMD ["java", "src/NumAleatorios.java"]
