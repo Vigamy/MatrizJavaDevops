@@ -29,6 +29,17 @@ jobs:
     # Executar main
     - name: Executar Main
       run: java src/NumAleatorios.java
-    
 
-    
+
+    - name: Docker Build & Push Action
+      uses: mr-smithers-excellent/docker-build-push@v6.4
+      with:
+        # Name of the Docker image
+        image: vigamy/java_console
+        tags: 1.0
+        # Tags override for Docker image
+        registry: docker.io
+        # Location of Dockerfile, if not Dockerfile in root directory
+        dockerfile: dockerfile
+        username: ${{secrets.DOCKER_USERNAME}}
+        password: ${{secrets.DOCKER_PASSWORD}}
