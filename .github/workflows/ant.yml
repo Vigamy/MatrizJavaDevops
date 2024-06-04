@@ -38,6 +38,7 @@ jobs:
         image: vigamy/java_console
         # Tags override for Docker image
         registry: docker.io
+        tags: 1, latest, ${{steps.version.outputs.version}}
         # Location of Dockerfile, if not Dockerfile in root directory
         dockerfile: dockerfile
         username: ${{secrets.DOCKER_USERNAME}}
