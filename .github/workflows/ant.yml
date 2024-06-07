@@ -30,20 +30,6 @@ jobs:
     - name: Executar Main
       run: java src/NumAleatorios.java
 
-    # Dar push da imagem
-    - name: Docker Build & Push Action
-      uses: mr-smithers-excellent/docker-build-push@v6.4
-      with:
-        # Name of the Docker image
-        image: vigamy/java_console
-        # Tags override for Docker image
-        registry: docker.io
-        tags: 1, latest, ${{steps.version.outputs.version}}
-        # Location of Dockerfile, if not Dockerfile in root directory
-        dockerfile: dockerfile
-        username: ${{secrets.DOCKER_USERNAME}}
-        password: ${{secrets.DOCKER_PASSWORD}}
-
     # Versinamento
     - name: Git Version
     # You may pin to the exact commit or the version.
@@ -55,3 +41,17 @@ jobs:
         # The name of the dev branch
         dev-branch: main
           
+
+    # Dar push da imagem
+    - name: Docker Build & Push Action
+      uses: mr-smithers-excellent/docker-build-push@v6.4
+      with:
+        # Name of the Docker image
+        image: vigamy/java_console
+        # Tags override for Docker image
+        registry: docker.io
+        tags: ${{ github.run_number }}
+        # Location of Dockerfile, if not Dockerfile in root directory
+        dockerfile: dockerfile
+        username: ${{secrets.DOCKER_USERNAME}}
+        password: ${{secrets.DOCKER_PASSWORD}}
